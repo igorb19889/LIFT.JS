@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lift | JS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body{
+            background-color: rgb(78, 129, 146);
+        }
+        #building, #user{
+            width: 100px;
+            height: 900px;
+            border: 3px solid white;
+            float: left;
+            
+            
+        }
+        #user button{
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            background-color: #999;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            
+        }
+        /* img{
+            width: 100px;
+            height: 100px;
+            color: white;
+            background-color: white;
+            transition: 2s;
+            
+          
+        } */
+        
+
+        .button{
+            width: 60px;
+            height: 60px;
+            display: block;
+
+            position: relative;
+            top: 770px;
+            left: 20px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .button:hover{
+            background-color: dodgerblue;
+            color: white;
+        }
+        
+        #user button:nth-child(1):hover{
+            background-color: rgb(3, 3, 3);
+        }
+        
+        #user button:nth-child(2):hover{
+            background-color: rgb(200, 255, 0);
+        }
+        #user button:nth-child(3):hover{
+            background-color: rgb(0, 255, 140);
+        }
+        #user button:nth-child(4):hover{
+            background-color: rgb(4, 0, 255);
+        }
+        #user button:nth-child(5):hover{
+            background-color: rgb(208, 0, 255);
+        }
+        #user button:nth-child(6):hover{
+            background-color: rgb(0, 255, 76);
+        }
+        #user button:nth-child(7):hover{
+            background-color: rgb(83, 58, 58);
+        }
+        #user button:nth-child(8):hover{
+            background-color: rgb(255, 213, 0);
+        }
+        #user button:nth-child(9):hover{
+            background-color: rgb(0, 255, 85);
+        }
+        #user button:nth-child(10):hover{
+            background-color: red;
+        }
+
+        #user button:nth-child(11):hover{
+            background-color: black;
+        }
+
+        #lift{
+            width: 100px;
+            height: 100px;
+            background-image: url(icon/lift.png);
+            background-repeat: no-repeat;
+
+            transition: 2s;
+            background-color: white;
+            }
+        
+        
+    </style>
+</head>
+<body onkeydown="onKey()">
+
+    <div id="building">
+
+        <!-- 
+            0 - 800
+            1 - 700
+            2 - 600
+            3 - 500
+            4 - 400
+            5 - 300
+            6 - 200
+            7 - 100
+         -->
+
+         <div id="lift" style="transform:translateY(0px);">
+            
+        </div>
+
+    </div>
+    
+
+
+    <div id="user">
+
+
+        <button onclick="floor= 8;moveLift()">8</button>
+        <button onclick="floor= 7;moveLift()">7</button>
+        <button onclick="floor= 6;moveLift()">6</button>
+        <button onclick="floor= 5;moveLift()">5</button>
+        <button onclick="floor= 4;moveLift()">4</button>
+        <button onclick="floor= 3;moveLift()">3</button>
+        <button onclick="floor= 2;moveLift()">2</button>
+        <button onclick="floor= 1;moveLift()">1</button>
+        <button onclick="floor= 0;moveLift()">0</button>
+
+    </div>
+<button class="button" onclick="moveLiftUp()"><i class="fa-solid fa-up-long"></i></button>
+<button class="button" onclick="moveLiftDown()"><i class="fa-solid fa-down-long"></i></button>
+<!------------------SCRIPT--------------------------------->
+
+<script>
+//HW1:add the 2 buttons ON top and BOTTOM  ^ , v
+//and add the next functionality
+// 1: update thefloor number
+// 2:update the #lift styles
+
+    let floor = 0
+    let buttonUp = 800
+    let buttonDown = -100
+
+    // const STEP = 100
+
+    function moveLift() {
+      let y = 800 - floor * 100 
+        lift.style = `
+        transform:
+        translateY(${y}px)
+        `
+    } 
+       moveLift()
+
+
+//----------------------------------------
+
+function onKey() {
+    if ( event.code == 'ArrowUp') {
+        moveLiftUp()
+    }
+    if ( event.code == 'ArrowDown') {
+        moveLiftDown()
+    }
+}
+
+function moveLiftUp() {
+    
+    if( buttonUp >0) {
+        buttonUp -= 100
+        lift.style = `
+        transform:
+        translateY( ${buttonUp}px)`
+    }
+}
+//---------------------------------------------->
+
+function moveLiftDown() {
+
+    if(buttonDown <800) {
+        buttonDown += 100
+        lift.style = `
+        transform:
+        translateY(${buttonDown}px)`
+    }
+}
+//----------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function moveLiftUp() {
+//     if(buttonUp * STEP <innerHeight - STEP * 1){
+//     buttonUp--
+//     lift.style = `
+//     transform:
+//     translateY(${buttonUp * STEP * floor}px)
+    
+    
+//     `
+//  } 
+// else {
+//     prompt("hi")
+// }
+// }
+// moveLiftUp()
+
+
+//--------------v-aici e totul ok!!! -----------------------
+
+// function moveLiftDown() {
+//     if(buttonDown * STEP <innerHeight - STEP *3){
+//     buttonDown++
+//     lift.style = `
+//     transform:
+//     translateY(${buttonDown * STEP - floor *  STEP}px)
+    
+//     ` 
+//     }
+//     // else{
+//     //     prompt("good")
+//     // }
+// }
+
+// moveLiftDown()
+
+
+
+
+</script>
+
+
+</body>
+</html>
